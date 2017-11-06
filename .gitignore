@@ -1,0 +1,5 @@
+*.mat
+*.asv
+*.eps
+*.fig
+backup/
