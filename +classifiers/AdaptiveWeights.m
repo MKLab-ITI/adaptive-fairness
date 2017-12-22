@@ -10,7 +10,7 @@ classdef AdaptiveWeights < handle
     methods
         function obj = AdaptiveWeights(model, heuristicTraining)
             if nargin<2
-                heuristicTraining = true;
+                heuristicTraining = false;
             end
             obj.model = model;
             obj.maxItterations = 12;

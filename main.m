@@ -1,6 +1,6 @@
-[x, y, sensitive, training, test] = dataImport.importCompassData();
+[x, y, sensitive, training, test] = dataImport.sameSignMistreatment();
 folds = 5;
-x = [x sensitive];
+%x = [x sensitive];
 
 classifier = classifiers.AdaptiveWeights(classifiers.SimpleLogisticClassifier(0.0001));
 
