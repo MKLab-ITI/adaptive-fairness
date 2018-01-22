@@ -1,5 +1,5 @@
 function [x, y, sensitive, training, test] = importBankData()
-   data = dataset('File', '+dataImport/bank-full.csv','ReadVarNames',true,'Delimiter',';');
+   data = dataset('File', '+dataImport/bank.csv','ReadVarNames',true,'Delimiter',';');
    %data = dataset('File', '+dataImport/bank.csv','ReadVarNames',true,'Delimiter',';');
    % testSplitPoint = size(data,1);
    % dataTest = dataset('File', 'bank.csv','ReadVarNames',true,'Delimiter',';');

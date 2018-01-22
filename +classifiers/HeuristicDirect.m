@@ -6,16 +6,19 @@ function bestParams = HeuristicDirect(problem, options)
     maxReg2 = 1;
     bestReg2 = 0;
     minBeta1 = 0;
-    maxBeta1 = 1;
+    maxBeta1 = 3;
     bestBeta1 =0;
     minBeta2 = 0;
-    maxBeta2 = 1;
+    maxBeta2 = 3;
     bestBeta2 =0;
     regRep1 = 2;
     regRep2 = 2;
     beta1Rep = 2;
     beta2Rep = 2;
     prevSigma = Inf;
+    
+    map = containers.Map;
+    
     for iter=1:options.maxits
         scoreSum = 0;
         scoreSquareSum = 0;
@@ -25,6 +28,7 @@ function bestParams = HeuristicDirect(problem, options)
         inc2 = (maxReg2-minReg2)/2.0;
         incBeta1 = (maxBeta1-minBeta1)/2.0;
         incBeta2 = (maxBeta2-minBeta2)/2.0;
+       
         if(incBeta1==0)
             beta1Rep = 0;
         end
@@ -46,7 +50,16 @@ function bestParams = HeuristicDirect(problem, options)
                     for i2=0:regRep2
                         reg2 = minReg2+inc2*i2;
                         fprintf('=');
-                        score = problem([reg1 reg2 beta1 beta2]);
+                        params = [reg1 reg2 beta1 beta2];
+%                         id = mat2str(params);
+%                         if map.isKey(id)
+%                             score = map(id);
+%                             id
+%                         else
+%                             score = problem(params);
+%                             map(id) = score;
+%                         end
+                        score = problem(params);
                         scoreSum = scoreSum+score;
                         scoreSquareSum = scoreSquareSum + score^2;
                         scoreNum = scoreNum+1;

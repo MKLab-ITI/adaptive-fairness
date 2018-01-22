@@ -13,9 +13,9 @@ classdef AdaptiveWeights < handle
                 heuristicTraining = false;
             end
             obj.model = model;
-            obj.maxItterations = 12;
+            obj.maxItterations = 4;
             obj.estimatorType = 0;
-            obj.continueFromPreviousWeights = true;
+            obj.continueFromPreviousWeights = false;
             obj.heuristicTraining = heuristicTraining;
         end
         
@@ -23,7 +23,7 @@ classdef AdaptiveWeights < handle
             options.testflag  = 0;%don't know global min
             options.showits   = 1;%show iterations
             options.maxits  = 80;%max number of iterations
-            options.maxevals  = 1200;%max function evaluations
+            options.maxevals  = 320;%max function evaluations
             options.maxdeep   = 200;%max rect divisions
             
             directLoss = @(params)(-objectiveFunction(obj.trainModel(x, y, sensitive, params, objectiveFunction), x, y, sensitive));
